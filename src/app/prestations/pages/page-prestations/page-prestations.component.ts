@@ -15,6 +15,9 @@ export class PagePrestationsComponent implements OnInit {
   public headers = ['Type', 'Client', 'NbJours', 'TjmHT', 'TotalHT', 'TotalTTC', 'State'] ;
   // public states = Object.values(State);
   public states = State;
+  public title: string;
+  public subtitle: string;
+
   constructor(private ps: PrestationsService) { }
 
 public changeState(item: Prestation, event ) {
@@ -30,6 +33,9 @@ public changeState(item: Prestation, event ) {
       this.collection = col;
       console.log(this.collection);
     });
+    this.title = "Presta";
+    this.subtitle = "Sous Presta";
+
   }
 
 }
