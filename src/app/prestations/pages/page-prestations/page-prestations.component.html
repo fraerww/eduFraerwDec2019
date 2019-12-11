@@ -2,13 +2,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Type</th>
-        <th scope="col">Client</th>
-        <th scope="col">NbJours</th>
-        <th scope="col">TjmHT</th>
-        <th scope="col">TotalHT</th>
-        <th scope="col">TotalTTC</th>
-        <th scope="col">State</th>
+        <th scope="col" *ngFor="let item of headers">{{item}}</th>
       </tr>
     </thead>
     <tbody>
@@ -16,10 +10,15 @@
         <td>{{item.typePresta}}</td>
         <td>{{item.client}}</td>
         <td>{{item.nbJours}}</td>
-        <td>{{item.tjmHt}}</td>
-        <td>{{item.totalHt()}}</td>
-        <td>{{item.totalTtc()}}</td>
-        <td>{{item.state}}</td>
+        <td>{{item.tjmHt | currency :'EUR'}}</td>
+        <td>{{item | total  | currency :'EUR' }}</td>
+        <td>{{item | total:'ttc'  | currency :'EUR' }}</td>
+        <td [appState]="item.state"> <!-- c du property binding -->
+          <select (change)="changeState(item, $event)">
+            <option *ngFor="let state of states | keyvalue " [value]="state.value" [selected]="state.value === item.state">{{state.value}}</option>
+          </select>
+
+        </td>
       </tr>
     </tbody>
   </table>
