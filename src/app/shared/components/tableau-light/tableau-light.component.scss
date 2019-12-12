@@ -1,7 +1,5 @@
 @import 'theme';
-
 #table-light {
-
   .state-annule {
     background: $color-error;
   }
@@ -11,6 +9,14 @@
   .state-confirme {
     background: $color-sucess;
   }
-
 }
-
+app-template-b #table-light {
+  .state-option {
+    background: $color3;
+  }
+}
+app-template-a #table-light {
+  .state-option {
+    background: $color1;
+  }
+}

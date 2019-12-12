@@ -1,0 +1,8 @@
+
+<!-- <a *ngIf="href" [href]="href">{{ label }}</a>
+<a *ngIf="route" [routerLink]="route">{{ label }}</a> -->
+
+<a *ngIf="href; else other" [href]="href">{{ label }}</a>
+<ng-template #other>
+  <a *ngIf="route" [routerLink]="route">{{ label }}</a>
+</ng-template>

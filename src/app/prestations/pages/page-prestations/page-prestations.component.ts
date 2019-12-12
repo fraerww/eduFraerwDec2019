@@ -17,11 +17,16 @@ export class PagePrestationsComponent implements OnInit {
   public states = State;
   public title: string;
   public subtitle: string;
+  public route: string;
+  public label: string;
+  public action: string;
 
   constructor(private ps: PrestationsService) { }
 
 public changeState(item: Prestation, event ) {
+
   //console.log(item, event.target.value);
+
   this.ps.update(item, event.target.value).subscribe((res: Prestation) => {
     // res étant la réponse de l'api.
     item.state = res.state; //update coté front.
@@ -35,7 +40,14 @@ public changeState(item: Prestation, event ) {
     });
     this.title = "Presta";
     this.subtitle = "Sous Presta";
+    this.route = 'add';
+    this.label = 'Ajouter une prestation';
+    this.action = 'Open Pop IN';
 
+  }
+
+  public popIn() {
+    console.log('-- Generate pop in with a service ');
   }
 
 }
