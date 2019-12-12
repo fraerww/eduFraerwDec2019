@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PrestationsService } from '../../services/prestations.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Prestation } from 'src/app/shared/models/prestation';
 import { State } from 'src/app/shared/enums/state.enum';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-page-prestations',
   templateUrl: './page-prestations.component.html',
   styleUrls: ['./page-prestations.component.scss']
 })
-export class PagePrestationsComponent implements OnInit {
+export class PagePrestationsComponent implements OnInit , OnDestroy {
   public collection$: Observable<Prestation[]>;
   public collection: Prestation[];
   public headers = ['Type', 'Client', 'NbJours', 'TjmHT', 'TotalHT', 'TotalTTC', 'State'] ;
@@ -20,8 +21,10 @@ export class PagePrestationsComponent implements OnInit {
   public route: string;
   public label: string;
   public action: string;
+  //private sub: Subscription;
 
-  constructor(private ps: PrestationsService) { }
+  constructor(private ps: PrestationsService,
+              private ar: ActivatedRoute) { }
 
 public changeState(item: Prestation, event ) {
 
@@ -34,12 +37,17 @@ public changeState(item: Prestation, event ) {
 }
 
   ngOnInit() {
-    this.ps.collection.subscribe((col) => {
-      this.collection = col;
-      console.log(this.collection);
+//  this.sub = this.ps.collection.subscribe((col) => {
+//    this.collection = col;
+//    console.log(this.collection);
+// });
+    this.collection$ = this.ps.collection;
+    this.ar.data.subscribe((flux) => {
+      this.title = flux.title;
+      this.subtitle = flux.subtitle;
+      console.log(flux);
     });
-    this.title = "Presta";
-    this.subtitle = "Sous Presta";
+
     this.route = 'add';
     this.label = 'Ajouter une prestation';
     this.action = 'Open Pop IN';
@@ -50,4 +58,7 @@ public changeState(item: Prestation, event ) {
     console.log('-- Generate pop in with a service ');
   }
 
+  ngOnDestroy() {
+    //this.sub.unsubscribe(); // inutile car déjà présent dans httpClient. Juste un exemple.
+  }
 }

@@ -47,4 +47,8 @@ public update(itemNikki: Prestation, state: State): Observable<any> {
   return this.http.patch(`${this.urlApi}prestations/${obj.id}`, obj);
 }
 
+public add(item): Observable<any> {
+  return this.http.post(`${this.urlApi}prestations`, item);
+}
+
 }

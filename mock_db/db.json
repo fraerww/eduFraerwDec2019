@@ -17,13 +17,29 @@
       "tva": 20,
       "tjmHt": 900,
       "state": "Confirmé"
+    },
+    {
+      "typePresta": "new presta",
+      "client": "client new presta",
+      "nbJours": 2,
+      "tva": 20,
+      "tjmHt": 1200,
+      "state": "Option",
+      "id": 3
     }
   ],
   "clients": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "name": "Client 1",
+      "email": "client1@gmail.com",
+      "state": "Actif"
+    },
+    {
+      "id": 2,
+      "name": "Client  2",
+      "email": "client2@gmail.com",
+      "state": "Inactif"
     }
   ]
 }

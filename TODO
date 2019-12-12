@@ -1,0 +1,8 @@
+
+Todo:
+    ☐ db.json avec 2 clients (interfa)
+    ☐ service clientsService
+ ☐ page client ts et html (template a ou b) et la meme directive state
+  ☐ meme bouton , tableau light ou dark, button vers la route clients/add
+
+

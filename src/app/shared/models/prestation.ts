@@ -9,7 +9,7 @@ export class Prestation implements PrestationI {
   nbJours = 1;
   tva = 20;
   tjmHt = 1200;
-  state: State;
+  state = State.OPTION;
   constructor(obj?: Partial<Prestation>) {
     if (obj) {
       Object.assign(this, obj);
