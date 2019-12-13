@@ -3,7 +3,8 @@ import { PrestationsService } from '../../services/prestations.service';
 import { Observable, Subscription } from 'rxjs';
 import { Prestation } from 'src/app/shared/models/prestation';
 import { State } from 'src/app/shared/enums/state.enum';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PrestationI } from 'src/app/shared/interfaces/prestation-i';
 
 @Component({
   selector: 'app-page-prestations',
@@ -24,6 +25,7 @@ export class PagePrestationsComponent implements OnInit , OnDestroy {
   //private sub: Subscription;
 
   constructor(private ps: PrestationsService,
+              private router: Router,
               private ar: ActivatedRoute) { }
 
 public changeState(item: Prestation, event ) {
@@ -34,6 +36,11 @@ public changeState(item: Prestation, event ) {
     // res étant la réponse de l'api.
     item.state = res.state; //update coté front.
   });
+}
+
+public editItem(item: Prestation) {
+  console.log('--' + JSON.stringify(item));
+  this.router.navigate(['/prestations/edit/' , item.id]);
 }
 
   ngOnInit() {

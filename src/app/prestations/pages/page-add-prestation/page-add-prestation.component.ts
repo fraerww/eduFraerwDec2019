@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PrestationsService } from '../../services/prestations.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PageAddPrestationComponent implements OnInit {
 
+
   constructor(
     private ps: PrestationsService,
     private router: Router,
@@ -16,6 +17,7 @@ export class PageAddPrestationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
   }
 
   public add(item: any){

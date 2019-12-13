@@ -1,1 +1,6 @@
-<p>footer works!</p>
+<p>v. {{ vs.version }}
+    <span *ngIf="heart$ | async as heart">{{ heart }}</span>
+
+    <img class="heart" *ngFor="let item of tab$ | async"  src="../../../../assets/img/like.svg" alt="Alt">
+
+</p>

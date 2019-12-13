@@ -25,6 +25,10 @@ export class PrestationsService {
     console.log(this.collection);
   }
 
+  public getItemById(id): Observable<any> {
+    return this.http.get<Prestation>(`${this.urlApi}prestations/${id}`);
+  }
+
   // get c
   public get collection(): Observable<any> {
     return this.collection$;
@@ -41,9 +45,11 @@ export class PrestationsService {
 
 
 // update itemNikki in collection
-public update(itemNikki: Prestation, state: State): Observable<any> {
+public update(itemNikki: Prestation, state?: State): Observable<any> {
   const obj = {...itemNikki};
-  obj.state = state;
+  if (state) {
+    obj.state = state;
+  }
   return this.http.patch(`${this.urlApi}prestations/${obj.id}`, obj);
 }
 

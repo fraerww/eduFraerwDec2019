@@ -6,10 +6,11 @@ import { FormPrestationComponent } from './components/form-prestation/form-prest
 import { PageAddPrestationComponent } from './pages/page-add-prestation/page-add-prestation.component';
 import { PagePrestationsComponent } from './pages/page-prestations/page-prestations.component';
 import { PrestationsRoutingModule } from './prestations-routing.module';
+import { PageEditComponent } from './pages/page-edit/page-edit.component';
 
 
 @NgModule({
-  declarations: [PagePrestationsComponent, PageAddPrestationComponent, FormPrestationComponent],
+  declarations: [PagePrestationsComponent, PageAddPrestationComponent, FormPrestationComponent, PageEditComponent],
   imports: [
     CommonModule,
     PrestationsRoutingModule,

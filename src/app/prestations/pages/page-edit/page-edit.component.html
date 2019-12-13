@@ -1,0 +1,3 @@
+<div class="container" *ngIf="itemN$ | async as item">
+    <app-form-prestation (ItemBcpNikki)="update($event)" [init]='item'></app-form-prestation>
+</div>
