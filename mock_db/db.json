@@ -26,6 +26,15 @@
       "tjmHt": 1200,
       "state": "Option",
       "id": 3
+    },
+    {
+      "typePresta": "new pres 2",
+      "client": "client",
+      "nbJours": 222,
+      "tva": 20,
+      "tjmHt": 12000,
+      "state": "Confirmé",
+      "id": 4
     }
   ],
   "clients": [

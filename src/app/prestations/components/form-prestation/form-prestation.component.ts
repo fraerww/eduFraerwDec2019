@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { State } from 'src/app/shared/enums/state.enum';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Prestation } from 'src/app/shared/models/prestation';
 
 
@@ -27,8 +27,13 @@ export class FormPrestationComponent implements OnInit {
 
   private createForm() {
     this.form = this.fb.group({
-      typePresta: [this.init.typePresta],
-      client: [this.init.client],
+      typePresta: [this.init.typePresta,
+        Validators.required
+      ],
+
+      client: [this.init.client,
+        Validators.compose([Validators.required, Validators.minLength(2)])
+      ],
       nbJours: [this.init.nbJours],
       tva: [this.init.tva],
       tjmHt: [this.init.tjmHt],
@@ -38,6 +43,6 @@ export class FormPrestationComponent implements OnInit {
 
   public onSubmit() {
     console.log(this.form.value);
-    this.ItemBcpNikki.emit(this.form.value);
+    this.ItemBcpNikki.emit(this.form.value); // JSON avec ts les form control
   }
 }
